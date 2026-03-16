@@ -1,0 +1,38 @@
+aid: powerpoint
+name: PowerPoint
+description: >-
+  Microsoft PowerPoint provides APIs through the Microsoft Graph API and
+  Office JavaScript API for creating, reading, and manipulating PowerPoint
+  presentations programmatically.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Presentations
+  - Microsoft Office
+  - API
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/powerpoint/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: powerpoint:powerpoint-api
+    name: PowerPoint API
+    description: >-
+      Microsoft PowerPoint API via Microsoft Graph for managing presentations,
+      slides, and content programmatically.
+    humanURL: https://learn.microsoft.com/en-us/graph/api/resources/presentation
+    tags:
+      - Presentations
+      - Microsoft Office
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/graph/api/resources/presentation
+common:
+  - type: Website
+    url: https://www.microsoft.com/en-us/microsoft-365/powerpoint
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/presentation
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
