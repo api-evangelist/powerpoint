@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PowerPoint via Microsoft Graph",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DriveItems",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get item metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the driveItem."
+              }
+            ]
+          },
+          "docs": "Retrieves metadata for a driveItem in the signed-in user's drive."
+        },
+        {
+          "info": {
+            "name": "Update item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the driveItem."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update item"
+        },
+        {
+          "info": {
+            "name": "Delete item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the driveItem."
+              }
+            ]
+          },
+          "docs": "Delete item"
+        },
+        {
+          "info": {
+            "name": "List children",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/children",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the driveItem."
+              }
+            ]
+          },
+          "docs": "List children"
+        },
+        {
+          "info": {
+            "name": "Download file content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/content",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the driveItem."
+              }
+            ]
+          },
+          "docs": "Returns the raw bytes (or a redirect to a short-lived download URL) of the file."
+        },
+        {
+          "info": {
+            "name": "Upload file content",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/content",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the driveItem."
+              }
+            ]
+          },
+          "docs": "Replace the content of an existing driveItem (for example a .pptx file)."
+        },
+        {
+          "info": {
+            "name": "Upload file by path",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/root:/:path:/content",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "Path to the file relative to the drive root, e.g. Documents/Deck.pptx"
+              }
+            ]
+          },
+          "docs": "Upload file by path"
+        },
+        {
+          "info": {
+            "name": "Copy item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/copy",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the driveItem."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy item"
+        },
+        {
+          "info": {
+            "name": "Create sharing link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/createLink",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the driveItem."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create sharing link"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
