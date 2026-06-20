@@ -8,7 +8,7 @@ description: >-
   Graph, while the Office JavaScript API enables in-document automation
   for Office Add-ins.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Microsoft Office
   - Microsoft 365
