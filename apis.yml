@@ -56,6 +56,10 @@ apis:
       - type: SDKs
         url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/powerpoint-quickstart
 common:
+  - type: Authentication
+    url: authentication/powerpoint-authentication.yml
+  - type: OAuthScopes
+    url: scopes/powerpoint-scopes.yml
   - type: Website
     url: https://www.microsoft.com/en-us/microsoft-365/powerpoint
   - type: Documentation
