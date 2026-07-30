@@ -8,7 +8,20 @@ description: >-
   Graph, while the Office JavaScript API enables in-document automation
   for Office Add-ins.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/powerpoint.png
 tags:
   - Microsoft Office
   - Microsoft 365
@@ -21,40 +34,47 @@ created: '2026-03-16'
 modified: '2026-04-28'
 specificationVersion: '0.19'
 apis:
-  - aid: powerpoint:powerpoint-graph-api
-    name: PowerPoint via Microsoft Graph
-    description: >-
-      Microsoft Graph exposes PowerPoint presentation files (.pptx)
-      stored in OneDrive and SharePoint as drive items, enabling upload,
-      download, sharing, and metadata operations against presentations
-      programmatically.
-    humanURL: https://learn.microsoft.com/en-us/graph/api/resources/driveitem
-    baseURL: https://graph.microsoft.com/v1.0
-    tags:
-      - Microsoft Graph
-      - Files
-      - Presentations
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/graph/auth/
-  - aid: powerpoint:powerpoint-javascript-api
-    name: Office JavaScript API for PowerPoint
-    description: >-
-      Office JavaScript API namespace for building PowerPoint Add-ins
-      that read, write, and manipulate slides, shapes, text, and tables
-      inside the running PowerPoint application.
-    humanURL: https://learn.microsoft.com/en-us/javascript/api/powerpoint
-    tags:
-      - Office Add-ins
-      - JavaScript
-      - Presentations
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/javascript/api/powerpoint
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/powerpoint-quickstart
+- aid: powerpoint:powerpoint-graph-api
+  name: PowerPoint via Microsoft Graph
+  description: >-
+    Microsoft Graph exposes PowerPoint presentation files (.pptx) stored in OneDrive and SharePoint as
+    drive items, enabling upload, download, sharing, and metadata operations against presentations programmatically.
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/driveitem
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Microsoft Graph
+  - Files
+  - Presentations
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+- aid: powerpoint:powerpoint-javascript-api
+  name: Office JavaScript API for PowerPoint
+  description: >-
+    Office JavaScript API namespace for building PowerPoint Add-ins that read, write, and manipulate slides,
+    shapes, text, and tables inside the running PowerPoint application.
+  humanURL: https://learn.microsoft.com/en-us/javascript/api/powerpoint
+  tags:
+  - Office Add-ins
+  - JavaScript
+  - Presentations
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/powerpoint
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/powerpoint-quickstart
+- aid: powerpoint:powerpoint-driveitems-api
+  name: PowerPoint DriveItems API
+  description: Manage files (including .pptx presentations) stored in OneDrive and SharePoint.
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/driveitem
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - DriveItems
+  properties:
+  - type: OpenAPI
+    url: openapi/powerpoint-driveitems-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/powerpoint-agentic-access.yml
