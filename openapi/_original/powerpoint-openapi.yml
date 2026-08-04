@@ -1,0 +1,244 @@
+openapi: 3.1.0
+info:
+  title: PowerPoint via Microsoft Graph
+  description: |
+    Microsoft Graph exposes PowerPoint presentation files (.pptx) stored in
+    OneDrive and SharePoint as driveItem resources. This OpenAPI definition
+    captures a representative subset of driveItem endpoints relevant to
+    managing PowerPoint files programmatically.
+    Derived from https://learn.microsoft.com/en-us/graph/api/resources/driveitem.
+  version: "1.0.0"
+  contact:
+    name: Microsoft Graph
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem
+servers:
+  - url: https://graph.microsoft.com/v1.0
+    description: Microsoft Graph v1.0
+security:
+  - OAuth2: []
+tags:
+  - name: DriveItems
+    description: Manage files (including .pptx presentations) stored in OneDrive and SharePoint.
+paths:
+  /me/drive/items/{item-id}:
+    parameters:
+      - $ref: '#/components/parameters/ItemId'
+    get:
+      tags: [DriveItems]
+      summary: Get item metadata
+      description: Retrieves metadata for a driveItem in the signed-in user's drive.
+      operationId: getDriveItem
+      responses:
+        '200':
+          description: The driveItem resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriveItem'
+    patch:
+      tags: [DriveItems]
+      summary: Update item
+      operationId: updateDriveItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriveItem'
+      responses:
+        '200':
+          description: Updated driveItem
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriveItem'
+    delete:
+      tags: [DriveItems]
+      summary: Delete item
+      operationId: deleteDriveItem
+      responses:
+        '204':
+          description: Item deleted
+  /me/drive/items/{item-id}/children:
+    parameters:
+      - $ref: '#/components/parameters/ItemId'
+    get:
+      tags: [DriveItems]
+      summary: List children
+      operationId: listChildren
+      responses:
+        '200':
+          description: A collection of child driveItems
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DriveItem'
+  /me/drive/items/{item-id}/content:
+    parameters:
+      - $ref: '#/components/parameters/ItemId'
+    get:
+      tags: [DriveItems]
+      summary: Download file content
+      description: Returns the raw bytes (or a redirect to a short-lived download URL) of the file.
+      operationId: downloadContent
+      responses:
+        '200':
+          description: File content
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+    put:
+      tags: [DriveItems]
+      summary: Upload file content
+      description: Replace the content of an existing driveItem (for example a .pptx file).
+      operationId: uploadContent
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Updated driveItem
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriveItem'
+  /me/drive/root:/{path}:/content:
+    parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Path to the file relative to the drive root, e.g. Documents/Deck.pptx
+    put:
+      tags: [DriveItems]
+      summary: Upload file by path
+      operationId: uploadContentByPath
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '201':
+          description: Created or updated driveItem
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriveItem'
+  /me/drive/items/{item-id}/copy:
+    parameters:
+      - $ref: '#/components/parameters/ItemId'
+    post:
+      tags: [DriveItems]
+      summary: Copy item
+      operationId: copyDriveItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parentReference:
+                  type: object
+                name:
+                  type: string
+      responses:
+        '202':
+          description: Accepted; monitor the returned location for progress.
+  /me/drive/items/{item-id}/createLink:
+    parameters:
+      - $ref: '#/components/parameters/ItemId'
+    post:
+      tags: [DriveItems]
+      summary: Create sharing link
+      operationId: createSharingLink
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [view, edit, embed]
+                scope:
+                  type: string
+                  enum: [anonymous, organization]
+      responses:
+        '200':
+          description: Sharing link permission
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: |
+        Microsoft Graph uses Microsoft Entra ID (Azure AD) OAuth 2.0.
+        Apps require delegated or application permissions such as Files.Read,
+        Files.ReadWrite, Sites.Read.All, or Sites.ReadWrite.All.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Sites.Read.All: Read items in all site collections
+            Sites.ReadWrite.All: Read and write items in all site collections
+  parameters:
+    ItemId:
+      name: item-id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the driveItem.
+  schemas:
+    DriveItem:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        webUrl:
+          type: string
+          format: uri
+        file:
+          type: object
+          properties:
+            mimeType:
+              type: string
+        folder:
+          type: object
+        createdDateTime:
+          type: string
+          format: date-time
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+        parentReference:
+          type: object
+          properties:
+            driveId:
+              type: string
+            path:
+              type: string

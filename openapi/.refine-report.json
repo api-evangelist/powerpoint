@@ -1,0 +1,14 @@
+{
+  "provider": "powerpoint",
+  "sources": [
+    "powerpoint-driveitems-api-openapi.yml"
+  ],
+  "outputs": [
+    "powerpoint-driveitems-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
