@@ -24,6 +24,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/powerpoint.png
 tags:
   - Microsoft Office
+  - Microsoft-365
+  - Presentations
+  - Productivity
+  - Documents
+tags_raw:
+  - Microsoft Office
   - Microsoft 365
   - Presentations
   - Productivity
@@ -43,6 +49,10 @@ apis:
   baseURL: https://graph.microsoft.com/v1.0
   tags:
   - Microsoft Graph
+  - File
+  - Presentations
+  tags_raw:
+  - Microsoft Graph
   - Files
   - Presentations
   properties:
@@ -57,6 +67,10 @@ apis:
     shapes, text, and tables inside the running PowerPoint application.
   humanURL: https://learn.microsoft.com/en-us/javascript/api/powerpoint
   tags:
+  - Office Add-Ins
+  - JavaScript
+  - Presentations
+  tags_raw:
   - Office Add-ins
   - JavaScript
   - Presentations
