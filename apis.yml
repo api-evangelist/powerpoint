@@ -78,7 +78,7 @@ apis:
     shapes, text, and tables inside the running PowerPoint application.
   humanURL: https://learn.microsoft.com/en-us/javascript/api/powerpoint
   tags:
-  - Office Add-ins
+  - Office Add-Ins
   - JavaScript
   - Presentations
   tags_raw:
