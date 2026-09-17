@@ -90,16 +90,16 @@ apis:
     url: https://learn.microsoft.com/en-us/javascript/api/powerpoint
   - type: SDKs
     url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/powerpoint-quickstart
-- aid: powerpoint:powerpoint-driveitems-api
-  name: PowerPoint DriveItems API
+- aid: powerpoint:powerpoint-drive-items-api
+  name: PowerPoint Drive Items API
   description: Manage files (including .pptx presentations) stored in OneDrive and SharePoint.
   humanURL: https://learn.microsoft.com/en-us/graph/api/resources/driveitem
   baseURL: https://graph.microsoft.com/v1.0
   tags:
-  - DriveItems
+  - Drive Items
   properties:
   - type: OpenAPI
-    url: openapi/powerpoint-driveitems-api-openapi.yml
+    url: openapi/powerpoint-drive-items-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/powerpoint-agentic-access.yml
