@@ -96,6 +96,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/api/resources/driveitem
   baseURL: https://graph.microsoft.com/v1.0
   tags:
+  - DriveItems
+  tags_raw:
   - Drive Items
   properties:
   - type: OpenAPI

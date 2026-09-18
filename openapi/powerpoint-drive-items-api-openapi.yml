@@ -9,9 +9,7 @@ info:
 
     managing PowerPoint files programmatically.
 
-    Derived from https://learn.microsoft.com/en-us/graph/api/resources/driveitem.
-
-    '
+    Derived from https://learn.microsoft.com/en-us/graph/api/resources/driveitem.'
   version: 1.0.0
   contact:
     name: Microsoft Graph
@@ -22,7 +20,7 @@ servers:
 security:
 - OAuth2: []
 tags:
-- name: DriveItems
+- name: Drive Items
   description: Manage files (including .pptx presentations) stored in OneDrive and SharePoint.
 paths:
   /me/drive/items/{item-id}:
@@ -30,7 +28,7 @@ paths:
     - $ref: '#/components/parameters/ItemId'
     get:
       tags:
-      - DriveItems
+      - Drive Items
       summary: Get item metadata
       description: Retrieves metadata for a driveItem in the signed-in user's drive.
       operationId: getDriveItem
@@ -43,7 +41,7 @@ paths:
                 $ref: '#/components/schemas/DriveItem'
     patch:
       tags:
-      - DriveItems
+      - Drive Items
       summary: Update item
       operationId: updateDriveItem
       requestBody:
@@ -61,7 +59,7 @@ paths:
                 $ref: '#/components/schemas/DriveItem'
     delete:
       tags:
-      - DriveItems
+      - Drive Items
       summary: Delete item
       operationId: deleteDriveItem
       responses:
@@ -72,7 +70,7 @@ paths:
     - $ref: '#/components/parameters/ItemId'
     get:
       tags:
-      - DriveItems
+      - Drive Items
       summary: List children
       operationId: listChildren
       responses:
@@ -92,7 +90,7 @@ paths:
     - $ref: '#/components/parameters/ItemId'
     get:
       tags:
-      - DriveItems
+      - Drive Items
       summary: Download file content
       description: Returns the raw bytes (or a redirect to a short-lived download URL) of the file.
       operationId: downloadContent
@@ -106,7 +104,7 @@ paths:
                 format: binary
     put:
       tags:
-      - DriveItems
+      - Drive Items
       summary: Upload file content
       description: Replace the content of an existing driveItem (for example a .pptx file).
       operationId: uploadContent
@@ -134,7 +132,7 @@ paths:
       description: Path to the file relative to the drive root, e.g. Documents/Deck.pptx
     put:
       tags:
-      - DriveItems
+      - Drive Items
       summary: Upload file by path
       operationId: uploadContentByPath
       requestBody:
@@ -156,7 +154,7 @@ paths:
     - $ref: '#/components/parameters/ItemId'
     post:
       tags:
-      - DriveItems
+      - Drive Items
       summary: Copy item
       operationId: copyDriveItem
       requestBody:
@@ -178,7 +176,7 @@ paths:
     - $ref: '#/components/parameters/ItemId'
     post:
       tags:
-      - DriveItems
+      - Drive Items
       summary: Create sharing link
       operationId: createSharingLink
       requestBody:
